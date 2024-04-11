@@ -42,7 +42,7 @@ public class ParalysisAI : MonoBehaviour
             {
                 gameObject.GetComponent<Renderer>().enabled = false;
                 transform.position = outside;
-                stareTime = 3;
+                stareTime = 15;
                 inRoom = false;
                 lookedAtOnce = false;
             }
