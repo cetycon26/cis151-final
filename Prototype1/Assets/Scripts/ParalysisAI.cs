@@ -10,6 +10,8 @@ public class ParalysisAI : MonoBehaviour
     public bool lookedAtOnce;
 
     public int random;
+    public AudioClip respawnSound;
+    AudioSource src;
 
     public Vector3 outside = new Vector3(4.17f, 2.32f, 28.2f);
     public float respawnTimer = 10;
@@ -89,6 +91,7 @@ public class ParalysisAI : MonoBehaviour
             gameObject.GetComponent<Renderer>().enabled = true;
             respawnTimer = Random.Range(7, 12);
             inRoom = true;
+            src.PlayOneShot(respawnSound);
         }
     }
 }
