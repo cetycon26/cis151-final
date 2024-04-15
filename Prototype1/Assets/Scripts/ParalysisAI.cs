@@ -8,7 +8,7 @@ public class ParalysisAI : MonoBehaviour
     public bool inView;
     public bool inRoom;
     public bool lookedAtOnce;
-
+// Hi
     public int random;
     public AudioClip respawnSound;
     AudioSource src;
@@ -16,7 +16,8 @@ public class ParalysisAI : MonoBehaviour
     public Vector3 outside = new Vector3(4.17f, 2.32f, 28.2f);
     public float respawnTimer = 10;
 
-    public float stareTime = 15;
+    public float stareTime;
+    public float paralyzedTime = 5;
     
     // Start is called before the first frame update
     void Start()
@@ -30,31 +31,60 @@ public class ParalysisAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!inView && lookedAtOnce)
+        if (!lookedAtOnce) //If not spotted, gets closer to you
         {
-            transform.position += transform.forward * Time.deltaTime;
+            transform.position += 2 * transform.forward * Time.deltaTime;
         }
-        else if (inView && lookedAtOnce) 
+
+        if (lookedAtOnce && inView) //If spotted and in view
         {
-            if (stareTime > 0)
+            if (stareTime > 0) //Staring timer
             {
                 stareTime -= Time.deltaTime;
+            } else { //Paralyze
+                ParalyzePlayer();
             }
-            else
-            {
-                gameObject.GetComponent<Renderer>().enabled = false;
-                transform.position = outside;
-                stareTime = 15;
-                inRoom = false;
-                lookedAtOnce = false;
-            }
+        }
+        else if (lookedAtOnce && !inView) //If gaze averted, despawn
+        {
+
+            gameObject.GetComponent<Renderer>().enabled = false;
+            transform.position = outside;
+            stareTime = 2;
+            inRoom = false;
+            lookedAtOnce = false;
         }
         else if (!inRoom)
         {
+            //  ParalyzePlayer(); 
             reSpawn();
         }
     }
     
+
+    void ParalyzePlayer()
+    {
+        paralyzedTime -= Time.deltaTime;
+        if (paralyzedTime > 0)
+        {
+            BodyController.lookSpeed = 0f;
+            CameraController.lookSpeed = 0f;
+        } 
+        if (paralyzedTime <= 0) {
+            stareTime = 2;
+            paralyzedTime = 5;
+            BodyController.lookSpeed = 1.0f;
+            CameraController.lookSpeed = 1.0f;
+
+            gameObject.GetComponent<Renderer>().enabled = false;
+                transform.position = outside;
+                stareTime = 2;
+                inRoom = false;
+                lookedAtOnce = false;
+        }
+        
+
+    }
     void OnBecameVisible()
     {
         inView = true;
