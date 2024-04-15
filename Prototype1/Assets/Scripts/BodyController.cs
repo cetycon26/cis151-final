@@ -5,19 +5,20 @@ using UnityEngine;
 public class BodyController : MonoBehaviour
 {
     public float rotationSpeed = 50f;
+    public static float lookSpeed = 1.0f;
 
     void Update()
     {
         // Rotate left
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
+            transform.Rotate(lookSpeed * Vector3.up * -rotationSpeed * Time.deltaTime);
         }
 
         // Rotate right
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            transform.Rotate(lookSpeed * Vector3.up * rotationSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
