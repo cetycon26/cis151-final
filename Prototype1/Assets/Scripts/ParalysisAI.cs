@@ -50,7 +50,7 @@ public class ParalysisAI : MonoBehaviour
 
             gameObject.GetComponent<Renderer>().enabled = false;
             transform.position = outside;
-            stareTime = 2;
+            stareTime = 3;
             inRoom = false;
             lookedAtOnce = false;
         }
@@ -71,14 +71,14 @@ public class ParalysisAI : MonoBehaviour
             CameraController.lookSpeed = 0f;
         } 
         if (paralyzedTime <= 0) {
-            stareTime = 2;
+            stareTime = 3;
             paralyzedTime = 5;
             BodyController.lookSpeed = 1.0f;
             CameraController.lookSpeed = 1.0f;
 
             gameObject.GetComponent<Renderer>().enabled = false;
                 transform.position = outside;
-                stareTime = 2;
+                stareTime = 3;
                 inRoom = false;
                 lookedAtOnce = false;
         }
