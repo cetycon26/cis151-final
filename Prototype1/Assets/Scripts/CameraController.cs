@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
     public float potentialRotation;
     public float rotationAmount;
 
+    public static float lookSpeed = 1.0f;
+
     void Start()
     {
         alreadyRotated = 0f;
@@ -24,7 +26,7 @@ public class CameraController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         // Calculate the amount of rotation based on input
-        rotationAmount = -verticalInput * rotationSpeed * Time.deltaTime;
+        rotationAmount = lookSpeed * -verticalInput * rotationSpeed * Time.deltaTime;
         potentialRotation = alreadyRotated + rotationAmount;
 
         if (potentialRotation <= maxYRotation && potentialRotation >= minYRotation)

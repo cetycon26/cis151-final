@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParalysisAI : MonoBehaviour
+public class StalkerAI : MonoBehaviour
 {
     public GameObject player;
     public bool inView;
@@ -10,6 +10,8 @@ public class ParalysisAI : MonoBehaviour
     public bool lookedAtOnce;
 
     public int random;
+    public AudioClip respawnSound;
+    AudioSource src;
 
     public Vector3 outside = new Vector3(4.17f, 2.32f, 28.2f);
     public float respawnTimer = 10;
