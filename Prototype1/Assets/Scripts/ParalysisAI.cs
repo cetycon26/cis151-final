@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ParalysisAI : MonoBehaviour
 {
@@ -22,10 +23,12 @@ public class ParalysisAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         transform.position = new Vector3(8.35f, 2.32f, 7.8f);
         inView = false;
         inRoom = true;
         lookedAtOnce = false;
+        reSpawn();
     }
 
     // Update is called once per frame
