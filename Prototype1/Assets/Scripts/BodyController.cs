@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BodyController : MonoBehaviour
 {
-    public float rotationSpeed = 50f;
+    public float rotationSpeed = 80f;
     public static float lookSpeed = 1.0f;
 
     void Update()
@@ -23,11 +23,11 @@ public class BodyController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            rotationSpeed = 80.0f;
+            rotationSpeed = 110.0f;
         }
         else
         {
-            rotationSpeed = 50f;
+            rotationSpeed = 80f;
         }
 
     }
