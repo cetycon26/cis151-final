@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Door
   - Wardrobe
+  - Door2
+  - Door1
+  - Center
+  - Level2Door
   layers:
   - Default
   - TransparentFX
