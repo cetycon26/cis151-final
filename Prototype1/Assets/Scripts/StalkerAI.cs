@@ -21,13 +21,25 @@ public class StalkerAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(8.35f, 2.32f, 7.8f);
+        var player = GameObject.FindGameObjectWithTag("Player");
+
         inView = false;
         inRoom = true;
         lookedAtOnce = false;
+        reSpawn();
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        //Send player to DeathScene if Stalker gets too close
+        float distance = Vector3.Distance(this.transform.position, player.transform.position);
+        Debug.Log("Stalker dist: " + distance);
+        if (distance < 3)
+        {
+            // UnityEngine.SceneManagement.SceneManager.LoadScene(DeathScene);
+        }
+    }
     void FixedUpdate()
     {
         if (!inView && lookedAtOnce)

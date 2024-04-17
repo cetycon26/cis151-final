@@ -11,6 +11,7 @@ TagManager:
   - Center
   - Level2Door
   - Attack
+  - Enemy
   layers:
   - Default
   - TransparentFX
