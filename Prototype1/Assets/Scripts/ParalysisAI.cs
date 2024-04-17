@@ -9,7 +9,7 @@ public class ParalysisAI : MonoBehaviour
     public bool inView;
     public bool inRoom;
     public bool lookedAtOnce;
-// Hi
+    
     public int random;
     public AudioClip respawnSound;
     AudioSource src;
@@ -23,8 +23,8 @@ public class ParalysisAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        var player = GameObject.FindGameObjectWithTag("Player");
         
-        transform.position = new Vector3(8.35f, 2.32f, 7.8f);
         inView = false;
         inRoom = true;
         lookedAtOnce = false;
@@ -32,6 +32,16 @@ public class ParalysisAI : MonoBehaviour
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        //If Paralysis gets too close behind, Paralyze player
+        float distance = Vector3.Distance(this.transform.position, player.transform.position);
+        Debug.Log("Paralysis dist: " + distance);
+        if (distance < 3)
+        {
+            ParalyzePlayer();
+        }
+    }
     void FixedUpdate()
     {
         if (!lookedAtOnce) //If not spotted, gets closer to you
