@@ -15,7 +15,8 @@ public class MouseLevel2 : MonoBehaviour
     public GameObject door1;
 
     public bool isInRoom;
-    public bool isAtDoor;
+    public bool isAtDoor1;
+    public bool isAtDoor2;
     public bool doorClosed;
     Vector3 door2Coordinates;
     Vector3 door1Coordinates;
@@ -31,7 +32,8 @@ public class MouseLevel2 : MonoBehaviour
     void Start()
     {
         isInRoom = true;
-        isAtDoor = false;
+        isAtDoor1 = false;
+        isAtDoor2 = false;
         doorClosed = false;
         centerCoordinates = new Vector3(0f, 0.50f, 0f);
         door2Coordinates = new Vector3(8.0f, 0.58f, 1.2f);
@@ -53,6 +55,8 @@ public class MouseLevel2 : MonoBehaviour
             if (Input.GetMouseButtonUp(0) && doorClosed)
             {
                 doorClosed = false;
+                GameData.door1Closed = false;
+                GameData.door2Closed = false;
                 animDoor2.SetBool("doorClosed", false);
                 animDoor1.SetBool("doorClosed", false);
             }
@@ -64,7 +68,8 @@ public class MouseLevel2 : MonoBehaviour
                 if (raycastHit.transform.CompareTag("Door2") && isInRoom)
                 {
                     isInRoom = false;
-                    isAtDoor = true;
+                    isAtDoor2 = true;
+                    GameData.isAtDoor2 = true;
                     animDoor2.SetBool("isAtDoor", true);
                     player.transform.position = door2Coordinates;
                     centerCollider.enabled = true;
@@ -72,13 +77,15 @@ public class MouseLevel2 : MonoBehaviour
                 else if (raycastHit.transform.CompareTag("Door2") && !isInRoom && !doorClosed)
                 {
                     doorClosed = true;
+                    GameData.door2Closed = true;
                     animDoor2.SetBool("doorClosed", true);
                 }
                 // DOOR 1
                 else if (raycastHit.transform.CompareTag("Door1") && isInRoom)
                 {
                     isInRoom = false;
-                    isAtDoor = true;
+                    isAtDoor1 = true;
+                    GameData.isAtDoor1 = true;
                     animDoor1.SetBool("isAtDoor", true);
                     player.transform.position = door1Coordinates;
                     centerCollider.enabled = true;
@@ -86,12 +93,16 @@ public class MouseLevel2 : MonoBehaviour
                 else if (raycastHit.transform.CompareTag("Door1") && !isInRoom && !doorClosed)
                 {
                     doorClosed = true;
+                    GameData.door1Closed = true;
                     animDoor1.SetBool("doorClosed", true);
                 }
                 else if (raycastHit.transform.CompareTag("Center"))
                 {
                     isInRoom = true;
-                    isAtDoor = false;
+                    isAtDoor1 = false;
+                    GameData.isAtDoor1 = false;
+                    isAtDoor2 = false;
+                    GameData.isAtDoor2 = false;
                     centerCollider.enabled = false;
                     animDoor2.SetBool("isAtDoor", false);
                     animDoor1.SetBool("isAtDoor", false);
