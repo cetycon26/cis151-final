@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef77e449caa65a4e96f6fa0bffe3c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1769923121607033413, guid: 0b98f190c5a241c4dbbdb0b19d784773, type: 3}
   inView: 0
   inRoom: 0
   lookedAtOnce: 0
@@ -1749,6 +1749,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 222920113033753581, guid: 59e60ca059ea7424bac5a5bdc2aa5152, type: 3}
+      propertyPath: timeLeft
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3935021118972308261, guid: 59e60ca059ea7424bac5a5bdc2aa5152, type: 3}
       propertyPath: m_Name
       value: Timer
@@ -1809,6 +1813,10 @@ PrefabInstance:
     - target: {fileID: 1769923121607033413, guid: 0b98f190c5a241c4dbbdb0b19d784773, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838646152975747348, guid: 0b98f190c5a241c4dbbdb0b19d784773, type: 3}
+      propertyPath: m_Constraints
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 2093053048950420485, guid: 0b98f190c5a241c4dbbdb0b19d784773, type: 3}
       propertyPath: m_LocalPosition.x
