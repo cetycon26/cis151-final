@@ -31,6 +31,7 @@ public class flashlight : MonoBehaviour
         ogBatteryLife = flashLight.intensity;
         flashLight.enabled = false;
         isOn = false;
+        GameData.flashlightOn = false;
         flicker = false;
 
     }
@@ -44,6 +45,7 @@ public class flashlight : MonoBehaviour
         {
             flashLight.enabled = !flashLight.enabled;
             isOn = !isOn;
+            GameData.flashlightOn = isOn;
         }
     }
 
@@ -70,6 +72,7 @@ public class flashlight : MonoBehaviour
             else
             {
                 isOn = false;
+                GameData.flashlightOn = isOn;
                 flashLight.enabled = false;
                 flicker = false;
             }
