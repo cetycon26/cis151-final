@@ -23,6 +23,7 @@ public class StalkerAI : MonoBehaviour
     {
         var player = GameObject.FindGameObjectWithTag("Player");
 
+        src = GetComponent<AudioSource>();
         inView = false;
         inRoom = true;
         lookedAtOnce = false;
@@ -34,7 +35,7 @@ public class StalkerAI : MonoBehaviour
     {
         //Send player to DeathScene if Stalker gets too close
         float distance = Vector3.Distance(this.transform.position, player.transform.position);
-        Debug.Log("Stalker dist: " + distance);
+        // Debug.Log("Stalker dist: " + distance);
         if (distance < 3)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Hallway");

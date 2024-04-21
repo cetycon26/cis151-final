@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 
 public class ParalysisAI : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class ParalysisAI : MonoBehaviour
     {
         var player = GameObject.FindGameObjectWithTag("Player");
         
+        src = GetComponent<AudioSource>();
         inView = false;
         inRoom = true;
         lookedAtOnce = false;
@@ -36,7 +38,7 @@ public class ParalysisAI : MonoBehaviour
     {
         //If Paralysis gets too close behind, Paralyze player
         float distance = Vector3.Distance(this.transform.position, player.transform.position);
-        Debug.Log("Paralysis dist: " + distance);
+        // Debug.Log("Paralysis dist: " + distance);
         if (distance < 3)
         {
             ParalyzePlayer();
@@ -135,6 +137,7 @@ public class ParalysisAI : MonoBehaviour
             respawnTimer = Random.Range(7, 12);
             inRoom = true;
             src.PlayOneShot(respawnSound);
+            Debug.Log("Respawn sound");
         }
     }
 }
