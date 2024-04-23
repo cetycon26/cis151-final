@@ -6,9 +6,9 @@ using UnityEngine.Audio;
 
 public class ParalysisAI : MonoBehaviour
 {
-    public GameObject player;
+    GameObject player;
     public bool inView;
-    public bool inRoom;
+    public static bool inRoom;
     public bool lookedAtOnce;
     
     public int random;
@@ -25,12 +25,12 @@ public class ParalysisAI : MonoBehaviour
     void Start()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
-        
         src = GetComponent<AudioSource>();
-        inView = false;
+        src.PlayOneShot(respawnSound);
+
+        stareTime = 3;
         inRoom = true;
         lookedAtOnce = false;
-        reSpawn();
     }
 
     // Update is called once per frame
@@ -60,19 +60,10 @@ public class ParalysisAI : MonoBehaviour
                 ParalyzePlayer();
             }
         }
-        else if (lookedAtOnce && !inView) //If gaze averted, despawn
+        else if (lookedAtOnce && !inView) //If spotted but gaze averted, despawn
         {
-
-            gameObject.GetComponent<Renderer>().enabled = false;
-            transform.position = outside;
-            stareTime = 3;
             inRoom = false;
-            lookedAtOnce = false;
-        }
-        else if (!inRoom)
-        {
-            //  ParalyzePlayer(); 
-            reSpawn();
+            Destroy(this.gameObject);
         }
     }
     
@@ -90,16 +81,13 @@ public class ParalysisAI : MonoBehaviour
             paralyzedTime = 5;
             BodyController.lookSpeed = 1.0f;
             CameraController.lookSpeed = 1.0f;
-
-            gameObject.GetComponent<Renderer>().enabled = false;
-                transform.position = outside;
-                stareTime = 3;
-                inRoom = false;
-                lookedAtOnce = false;
+            
+            inRoom = false;
+            Destroy(this.gameObject);
         }
         
-
     }
+
     void OnBecameVisible()
     {
         inView = true;
@@ -109,35 +97,5 @@ public class ParalysisAI : MonoBehaviour
     void OnBecameInvisible()
     {
         inView = false;
-    }
-    
-    void reSpawn()
-    {
-        respawnTimer -= Time.deltaTime;
-        if (respawnTimer < 0)
-        {
-            random = Random.Range(1, 4);
-            if (random == 1)
-            {
-                transform.position = new Vector3(Random.Range(-8.35f, 8.35f), 2.32f, 7.8f);
-            }
-            else if (random == 2)
-            {
-                transform.position = new Vector3(Random.Range(-8.35f, 8.35f), 2.32f, -7.8f);
-            }
-            else if(random == 3)
-            {
-                transform.position = new Vector3(-8.35f, 2.32f, Random.Range(-7.8f, 7.8f));
-            }
-            else
-            {
-                transform.position = new Vector3(8.35f, 2.32f, Random.Range(-7.8f, 7.8f));
-            }
-            gameObject.GetComponent<Renderer>().enabled = true;
-            respawnTimer = Random.Range(7, 12);
-            inRoom = true;
-            src.PlayOneShot(respawnSound);
-            Debug.Log("Respawn sound");
-        }
     }
 }

@@ -17,6 +17,8 @@ public class GameTimer : MonoBehaviour
     {
         if (timeLeft <= 0)
         {
+            BodyController.lookSpeed = 1.0f;
+            CameraController.lookSpeed = 1.0f;
             UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
         }
         timeLeft -= Time.deltaTime;
