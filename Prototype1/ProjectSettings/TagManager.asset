@@ -11,6 +11,9 @@ TagManager:
   - Center
   - Level2Door
   - Attack
+  - Enemy
+  - Paralysis
+  - Stalker
   layers:
   - Default
   - TransparentFX
