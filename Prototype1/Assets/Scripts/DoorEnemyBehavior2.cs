@@ -68,15 +68,17 @@ public class DoorEnemyBehavior2 : MonoBehaviour
             dieTimer = dieTimer - Time.deltaTime;
             if (dieTimer <= 0.0f)
             {
+
+                Debug.Log("U ARE DEAD");
+
                 GameData.lvl2enemySpawned = false;
                 GameData.enemyAtDoor2 = false;
-                Debug.Log("U ARE DEAD");
                 UnityEngine.SceneManagement.SceneManager.LoadScene("DoorDeath"); // LOAD SCENE WITH JUMPSCARE
             }
         }
         else if (toAttack)
         {
-            if (GameData.door1Closed)
+            if (GameData.door2Closed)
             {
                 despawnTimer = despawnTimer - Time.deltaTime;
             }
