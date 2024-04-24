@@ -18,8 +18,8 @@ public class DoorAudio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (GameData.isAtDoor1 && GameData.enemyAtDoor1)
+        /*
+        if (GameData.isAtDoor1 && GameData.enemyAtDoor1 && !GameData.door1Closed)
         {
             if (!GameData.playingBreathing)
             {
@@ -28,7 +28,16 @@ public class DoorAudio : MonoBehaviour
                 GameData.playingBreathing = true;
             }
         }
-        else if (GameData.isAtDoor2 && GameData.enemyAtDoor2)
+        else if (GameData.isAtDoor2 && GameData.enemyAtDoor2 && !GameData.door2Closed)
+        {
+            if (!GameData.playingBreathing)
+            {
+
+                source.Play(0);
+                GameData.playingBreathing = true;
+            }
+        } */
+        if (GameData.lvl2enemySpawned && (!GameData.door1Closed && !GameData.door2Closed))
         {
             if (!GameData.playingBreathing)
             {

@@ -39,6 +39,7 @@ public class DoorEnemyBehavior : MonoBehaviour
         if (despawnTimer <= 0)
         {
             Debug.Log("SAFE");
+
             GameData.lvl2enemySpawned = false;
             GameData.enemyAtDoor1 = false;
             Destroy(gameObject);
