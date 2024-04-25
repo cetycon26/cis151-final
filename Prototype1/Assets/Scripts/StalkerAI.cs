@@ -46,7 +46,7 @@ public class StalkerAI : MonoBehaviour
         // Move forward if not in view
         if (!inView)
         {
-            transform.position += transform.forward * Time.deltaTime;
+            transform.position -= transform.forward * Time.deltaTime; // It's -= because of flipping the FacePlayer y-axis (180 * ...
         } 
         else
         {
