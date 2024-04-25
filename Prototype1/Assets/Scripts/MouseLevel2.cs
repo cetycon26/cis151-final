@@ -14,6 +14,10 @@ public class MouseLevel2 : MonoBehaviour
     public GameObject door2;
     public GameObject door1;
 
+    public GameObject jumpscare;
+    public AudioClip jumpscareSound;
+    AudioSource src;
+
     public bool isInRoom;
     public bool isAtDoor1;
     public bool isAtDoor2;
@@ -41,6 +45,7 @@ public class MouseLevel2 : MonoBehaviour
         centerCollider = center.GetComponent<Collider>();
         animDoor2 = door2.GetComponent<Animator>();
         animDoor1 = door1.GetComponent<Animator>();
+        src = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,6 +77,12 @@ public class MouseLevel2 : MonoBehaviour
                     GameData.isAtDoor2 = true;
                     animDoor2.SetBool("isAtDoor", true);
                     player.transform.position = door2Coordinates;
+                    // JUMPSCARE
+                    if (Random.Range(0,8) == 0) {
+                        jumpscare.SetActive(true);
+                        src.PlayOneShot(jumpscareSound);
+
+                    }
                     centerCollider.enabled = true;
                 }
                 else if (raycastHit.transform.CompareTag("Door2") && !isInRoom && !doorClosed)
