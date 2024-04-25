@@ -11,6 +11,6 @@ public class FacePlayer : MonoBehaviour
     void LateUpdate()
     {
         transform.LookAt(FPCamera.transform);
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        transform.rotation = Quaternion.Euler(0f, 180 * transform.rotation.eulerAngles.y, 0f);
     }
 }

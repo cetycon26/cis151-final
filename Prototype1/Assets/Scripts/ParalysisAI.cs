@@ -48,7 +48,7 @@ public class ParalysisAI : MonoBehaviour
     {
         if (!lookedAtOnce) //If not spotted, gets closer to you
         {
-            transform.position += 2 * transform.forward * Time.deltaTime;
+            transform.position -= transform.forward * Time.deltaTime; // It's -= because of flipping the FacePlayer y-axis (180 * ...)
         }
 
         if (lookedAtOnce && inView) //If spotted and in view
