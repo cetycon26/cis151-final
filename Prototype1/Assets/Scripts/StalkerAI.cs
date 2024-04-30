@@ -37,7 +37,7 @@ public class StalkerAI : MonoBehaviour
         // Debug.Log("Stalker dist: " + distance);
         if (distance < 3)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Hallway");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("StalkerDeath");
         }
     }
 

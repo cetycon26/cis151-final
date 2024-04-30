@@ -6,15 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 65201e65d9df6a440b8b4cc3eae25c70
+  - enabled: 1
     path: Assets/Scenes/Level1-Bedroom.unity
     guid: bf77f7e560011244e8e6143ef67e642c
   - enabled: 1
     path: Assets/Scenes/Hallway.unity
     guid: 6aa1b49d4a1849e4b9e112c23ea0033b
   - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: b434955cb5f24164ea2433d589af6022
+  - enabled: 1
     path: Assets/Scenes/DoorDeath.unity
     guid: c5ec1f6c66cdfae4bbf00890c9fb68cf
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 4795a351106570848a6b27c820d8969e
+  - enabled: 1
+    path: Assets/Scenes/StalkerDeath.unity
+    guid: 7ac6ff177ceb6e34293f1d90dfe06732
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: b7a1cfa8e42044d499adf02f3acd8b1b
   m_configObjects: {}

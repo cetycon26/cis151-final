@@ -37,7 +37,7 @@ public class Pause : MonoBehaviour
     }
 
     public void GoToMenu(){
-        Debug.Log("loading menu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     public void PauseFunction(){
