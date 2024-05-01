@@ -12,12 +12,27 @@ public class GameTimer : MonoBehaviour
 	int currHour = 9;
 	int currMinute = 0;
 
+	public GameObject note1;
+    public GameObject note2;
+    public GameObject note3;
+
+	bool note1active;
+	bool note2active;
+	bool note3active;
+
+	AudioSource src;
+	public AudioClip noteSound;
+
     
 	// Start is called before the first frame update
 	void Start()
 	{
    	 
     	clockText.text = "9:00";
+		note1active = false;
+		note2active = false;
+		note3active = false;
+		src = GetComponent<AudioSource>();
 	}
 
 	void FixedUpdate()
@@ -44,6 +59,28 @@ public class GameTimer : MonoBehaviour
         	timePassed = 0;
         	clockText.text = currHour + ":" + currMinute;
     	}
+	if (!note1active) {
+		if (currHour == 9 && currMinute >= 30) {
+			note1.SetActive(true);
+			note1active = true;
+			src.PlayOneShot(noteSound);
+		}
+	}
+	else if (!note2active) {
+		if (currHour == 10 && currMinute >= 0) {
+			note2.SetActive(true);
+			note2active = true;
+			src.PlayOneShot(noteSound);
+		}
+	}
+	else if (!note3active) {
+		if (currHour == 10 && currMinute >= 30) {
+			note3.SetActive(true);
+			note3active = true;
+			src.PlayOneShot(noteSound);
+		}
+	}
+			
 	}
 }
 
