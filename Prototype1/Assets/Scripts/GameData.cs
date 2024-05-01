@@ -15,4 +15,6 @@ public class GameData
     public static bool enemyAtDoor2 = false;
     public static bool playingBreathing;
 
+    public static int level = 1;
+
 }

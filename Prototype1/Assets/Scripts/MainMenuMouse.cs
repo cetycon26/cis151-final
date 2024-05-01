@@ -17,6 +17,7 @@ public class MainMenuMouse : MonoBehaviour
     void Start()
     {
         src = GetComponent<AudioSource>();
+        GameData.level = 1;
     }
 
     // Update is called once per frame

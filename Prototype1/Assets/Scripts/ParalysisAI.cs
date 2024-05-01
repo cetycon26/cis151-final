@@ -19,7 +19,7 @@ public class ParalysisAI : MonoBehaviour
     public float respawnTimer = 10;
 
     public float stareTime;
-    public float paralyzedTime = 5;
+    public float paralyzedTime = 3;
     
     // Start is called before the first frame update
     void Start()

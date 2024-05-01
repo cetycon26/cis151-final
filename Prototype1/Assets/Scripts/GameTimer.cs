@@ -9,8 +9,9 @@ public class GameTimer : MonoBehaviour
 	public string nextScene;
 	public TMP_Text clockText;
 	public float timePassed = 0;
-	int currHour = 9;
-	int currMinute = 0;
+	public float totalMin;
+	int currHour;
+	int currMinute;
 
 	public GameObject note1;
     public GameObject note2;
@@ -28,11 +29,28 @@ public class GameTimer : MonoBehaviour
 	void Start()
 	{
    	 
-    	clockText.text = "9:00";
+		if (GameData.level == 1) {
+			clockText.text = "6:00";
+			currHour = 6;
+			currMinute = 0;
+		}
+		else if (GameData.level == 2) {
+			clockText.text = "8:00";
+			currHour = 8;
+			currMinute = 0;
+		}
+		else {
+			clockText.text = "10:00";
+			currHour = 10;
+			currMinute = 0;
+		}
+    	totalMin = 0;
+
 		note1active = false;
 		note2active = false;
 		note3active = false;
 		src = GetComponent<AudioSource>();
+
 	}
 
 	void FixedUpdate()
@@ -41,6 +59,10 @@ public class GameTimer : MonoBehaviour
     	{
         	BodyController.lookSpeed = 1.0f;
         	CameraController.lookSpeed = 1.0f;
+			GameData.level += 1;
+			GameData.enemyAtDoor1 = false;
+    		GameData.enemyAtDoor2 = false;
+			GameData.lvl2enemySpawned = false;
         	UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
     	}
     	timeLeft -= Time.deltaTime;
@@ -51,30 +73,34 @@ public class GameTimer : MonoBehaviour
         	{
             	currHour += 1;
             	currMinute = 0;
+				clockText.text = currHour + ":" + currMinute + currMinute;
         	}
         	else
         	{
             	currMinute += 10;
+				clockText.text = currHour + ":" + currMinute;
         	}
         	timePassed = 0;
-        	clockText.text = currHour + ":" + currMinute;
+			totalMin += 10;
+        	
+			
     	}
 	if (!note1active) {
-		if (currHour == 9 && currMinute >= 30) {
+		if (totalMin >= 30) {
 			note1.SetActive(true);
 			note1active = true;
 			src.PlayOneShot(noteSound);
 		}
 	}
 	else if (!note2active) {
-		if (currHour == 10 && currMinute >= 0) {
+		if (totalMin >= 60) {
 			note2.SetActive(true);
 			note2active = true;
 			src.PlayOneShot(noteSound);
 		}
 	}
 	else if (!note3active) {
-		if (currHour == 10 && currMinute >= 30) {
+		if (totalMin >= 90) {
 			note3.SetActive(true);
 			note3active = true;
 			src.PlayOneShot(noteSound);
