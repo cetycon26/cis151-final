@@ -9,7 +9,8 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CameraController.lookSpeed = 1.0f;
+        BodyController.lookSpeed = 1.0f;
     }
 
     // Update is called once per frame
