@@ -14,6 +14,10 @@ public class Mouse : MonoBehaviour
     public GameObject center;
     public GameObject door2;
 
+    public GameObject note1;
+    public GameObject note2;
+    public GameObject note3;
+
     public bool isInRoom;
     public bool isAtDoor;
     public bool doorClosed;
@@ -23,6 +27,9 @@ public class Mouse : MonoBehaviour
     Collider centerCollider;
 
     Animator animDoor2;
+
+    AudioSource src;
+	public AudioClip noteSound;
 
     // Start is called before the first frame update
     void Start()
@@ -34,14 +41,17 @@ public class Mouse : MonoBehaviour
         door2Coordinates = new Vector3(7.89f, 0.58f, -4.04f);
         centerCollider = center.GetComponent<Collider>();
         animDoor2 = door2.GetComponent<Animator>();
+
+        src = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        Ray ray = FPcamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, 200, interactable))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // delete
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 600, interactable))
         {
             
             transform.position = raycastHit.point;
@@ -77,6 +87,22 @@ public class Mouse : MonoBehaviour
                     animDoor2.SetBool("isAtDoor", false);
                     player.transform.position = centerCoordinates;
                     
+                }
+                else if (raycastHit.transform.CompareTag("Note1"))
+                {
+                    note1.SetActive(true);
+                    src.PlayOneShot(noteSound);
+                    
+                }
+                else if (raycastHit.transform.CompareTag("Note2"))
+                {
+                    note2.SetActive(true);
+                    src.PlayOneShot(noteSound);
+                }
+                else if (raycastHit.transform.CompareTag("Note3"))
+                {
+                    note3.SetActive(true);
+                    src.PlayOneShot(noteSound);
                 }
             }
             

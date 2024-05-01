@@ -14,6 +14,9 @@ TagManager:
   - Enemy
   - Paralysis
   - Stalker
+  - Note1
+  - Note2
+  - Note3
   layers:
   - Default
   - TransparentFX
