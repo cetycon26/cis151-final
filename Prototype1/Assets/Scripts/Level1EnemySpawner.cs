@@ -13,7 +13,8 @@ public class Level1EnemySpawner : MonoBehaviour
 
     void Start()
     {
-
+        ParalysisAI.inRoom = false;
+        StalkerAI.inRoom = false;
     }
 
     // Update is called once per frame

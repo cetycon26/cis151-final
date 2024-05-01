@@ -37,6 +37,9 @@ public class Pause : MonoBehaviour
     }
 
     public void GoToMenu(){
+        pmenu = false;
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
