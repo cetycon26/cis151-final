@@ -83,7 +83,7 @@ public class MouseLevel2 : MonoBehaviour
                     animDoor2.SetBool("isAtDoor", true);
                     player.transform.position = door2Coordinates;
                     // JUMPSCARE
-                    if (Random.Range(0,8) == 0) {
+                    if (Random.Range(0,6) == 0) {
                         jumpscare.SetActive(true);
                         src.PlayOneShot(jumpscareSound);
 
