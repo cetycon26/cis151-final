@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DoorDeath.unity
     guid: c5ec1f6c66cdfae4bbf00890c9fb68cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: 4795a351106570848a6b27c820d8969e
   - enabled: 1
