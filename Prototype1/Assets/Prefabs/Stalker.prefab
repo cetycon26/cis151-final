@@ -116,7 +116,7 @@ MonoBehaviour:
   inView: 0
   lookedAtOnce: 0
   random: 0
-  respawnSound: {fileID: 0}
+  respawnSound: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
   outside: {x: 4.17, y: 2.32, z: 28.2}
   respawnTimer: 7
 --- !u!82 &3606672249183011252

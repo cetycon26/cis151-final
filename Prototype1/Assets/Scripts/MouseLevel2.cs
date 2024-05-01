@@ -26,6 +26,10 @@ public class MouseLevel2 : MonoBehaviour
     Vector3 door1Coordinates;
     Vector3 centerCoordinates;
 
+    public GameObject note1;
+    public GameObject note2;
+    public GameObject note3;
+	public AudioClip noteSound;
 
     Collider centerCollider;
 
@@ -52,12 +56,7 @@ public class MouseLevel2 : MonoBehaviour
     void Update()
     {
 
-        Ray ray = FPcamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, 200, interactable))
-        {
-
-            transform.position = raycastHit.point;
-            if (Input.GetMouseButtonUp(0) && doorClosed)
+        if (Input.GetMouseButtonUp(0) && doorClosed)
             {
                 doorClosed = false;
                 GameData.door1Closed = false;
@@ -65,6 +64,12 @@ public class MouseLevel2 : MonoBehaviour
                 animDoor2.SetBool("doorClosed", false);
                 animDoor1.SetBool("doorClosed", false);
             }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 800, interactable))
+        {
+
+            transform.position = raycastHit.point;
+            
             if (Input.GetMouseButtonDown(0))
             {
                 // DOOR 2
@@ -119,6 +124,30 @@ public class MouseLevel2 : MonoBehaviour
                     animDoor1.SetBool("isAtDoor", false);
                     player.transform.position = centerCoordinates;
 
+                    doorClosed = false;
+                    GameData.door1Closed = false;
+                    GameData.door2Closed = false;
+                    animDoor2.SetBool("doorClosed", false);
+                    animDoor1.SetBool("doorClosed", false);
+
+                }
+                else if (raycastHit.transform.CompareTag("Note1"))
+                {
+                    note1.SetActive(true);
+                    src.PlayOneShot(noteSound);
+                    
+                }
+                else if (raycastHit.transform.CompareTag("Note2"))
+                {
+                    note2.SetActive(true);
+                    src.PlayOneShot(noteSound);
+                    
+                }
+                else if (raycastHit.transform.CompareTag("Note3"))
+                {
+                    note3.SetActive(true);
+                    src.PlayOneShot(noteSound);
+                    
                 }
             }
 
