@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StalkerAI : MonoBehaviour
 {
-    public GameObject player;
+    // public GameObject player;
     public bool inView;
     public static bool inRoom;
     public bool lookedAtOnce;
@@ -32,6 +32,7 @@ public class StalkerAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var player = GameObject.FindGameObjectWithTag("Player");
         //Send player to DeathScene if Stalker gets too close
         float distance = Vector3.Distance(this.transform.position, player.transform.position);
         // Debug.Log("Stalker dist: " + distance);
