@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPCamera: {fileID: 7150495253390817544, guid: ebe622cd7ae033b4bbde2297d009d156, type: 3}
+  player: {fileID: 2774248429528836502, guid: 923d0d6cff84f0a42a50fc582643006b, type: 3}
+  target: {fileID: 7524082496600968165, guid: 923d0d6cff84f0a42a50fc582643006b, type: 3}
 --- !u!114 &1730377562714654413
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,12 +5,13 @@ using UnityEngine;
 public class FacePlayer : MonoBehaviour
 {
 
-    public Camera FPCamera;
-
+    
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.LookAt(FPCamera.transform);
+        var player = GameObject.FindGameObjectWithTag("Player");
+
+        transform.LookAt(player.transform);
         transform.rotation = Quaternion.Euler(0f, 180 * transform.rotation.eulerAngles.y, 0f);
     }
 }
