@@ -27,14 +27,17 @@ public class MainMenu : MonoBehaviour
 
     public void Level1() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level1-Bedroom");
+        GameData.level = 1;
     }
 
     public void Level2() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Hallway");
+        GameData.level = 2;
     }
 
     public void Level3() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
+        GameData.level = 3;
     }
 
     public void Controls(){
